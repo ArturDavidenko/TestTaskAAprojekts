@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTaskWishListAPI", "TestTaskWishListAPI\TestTaskWishListAPI.csproj", "{104B7692-3C5C-450A-BD8F-E5093EBACE73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{104B7692-3C5C-450A-BD8F-E5093EBACE73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104B7692-3C5C-450A-BD8F-E5093EBACE73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104B7692-3C5C-450A-BD8F-E5093EBACE73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104B7692-3C5C-450A-BD8F-E5093EBACE73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {13579689-9C7D-4D10-A583-86B036E01E72}
+	EndGlobalSection
+EndGlobal

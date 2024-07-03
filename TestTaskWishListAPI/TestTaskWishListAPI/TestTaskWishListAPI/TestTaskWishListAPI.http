@@ -1,0 +1,6 @@
+@TestTaskWishListAPI_HostAddress = http://localhost:5110
+
+GET {{TestTaskWishListAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
