@@ -1,19 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TestTaskWishListAPP.Models;
-using TestTaskWishListAPP.Services.Repository;
-
+using TestTaskWishListAPP.Services;
 
 namespace TestTaskWishListAPP.Controllers
 {
     public class HomeController : Controller
     {
 
-        private readonly WishItemsRepository _repository;
+        private readonly WishItemsService _service;
 
-        public HomeController(WishItemsRepository repository)
+        public HomeController(WishItemsService repository)
         {
-            _repository = repository;
+            _service = repository;
         }
 
         public IActionResult Index()
@@ -23,26 +22,26 @@ namespace TestTaskWishListAPP.Controllers
 
         public async Task<IActionResult> HomePage() 
         {
-            var wishItems = await _repository.GetWishItems();
+            var wishItems = await _service.GetWishItems();
             return View(wishItems);
         }
 
         public async Task<IActionResult> DeleteWishItem(int id)
         {
-            await _repository.DeleteWishItem(id);
+            await _service.DeleteWishItem(id);
             return RedirectToAction("HomePage");
         }
 
         public async Task<IActionResult> CreateWishItem(string title, string description)
         {
-            await _repository.CreateWishItem(title, description);
+            await _service.CreateWishItem(title, description);
             return RedirectToAction("HomePage");
         }
 
         [HttpPost]
         public async Task<IActionResult> EditWishItem([FromBody] WishItem item)
         {
-            await _repository.UpdateWishItem(item);
+            await _service.UpdateWishItem(item);
             return RedirectToAction("HomePage");
         }
 

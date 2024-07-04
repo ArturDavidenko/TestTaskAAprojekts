@@ -1,13 +1,20 @@
-﻿using System.Text;
+﻿using Microsoft.Extensions.Options;
+using System.Text;
 using System.Text.Json;
+using TestTaskWishListAPP.Helper;
 using TestTaskWishListAPP.Models;
 using TestTaskWishListAPP.Services.Interfaces;
 
-namespace TestTaskWishListAPP.Services.Repository
+namespace TestTaskWishListAPP.Services
 {
-    public class WishItemsRepository : IWishItemsRepository
+    public class WishItemsService : IWishItemsRepository
     {
-        private readonly string _RequesURL = "https://localhost:7249/api/WishList"; //Write your local url request from API
+        private readonly string _requesURL;
+
+        public WishItemsService(IOptions<ApiSetting> apiSetting)
+        {
+            _requesURL = apiSetting.Value.RequesURL;
+        }
 
         public async Task CreateWishItem(string title, string description)
         {
@@ -16,7 +23,7 @@ namespace TestTaskWishListAPP.Services.Repository
             using (HttpClient httpClient = new HttpClient())
             {
                 var jsonContent = new StringContent(JsonSerializer.Serialize(wishItem), Encoding.UTF8, "application/json");
-                var response = await httpClient.PostAsync(_RequesURL, jsonContent);
+                var response = await httpClient.PostAsync(_requesURL, jsonContent);
             }
         }
 
@@ -24,7 +31,7 @@ namespace TestTaskWishListAPP.Services.Repository
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                var response = await httpClient.DeleteAsync($"{_RequesURL}/{id}");
+                var response = await httpClient.DeleteAsync($"{_requesURL}/{id}");
             }
         }
 
@@ -34,7 +41,7 @@ namespace TestTaskWishListAPP.Services.Repository
 
             using (HttpClient httpClient = new HttpClient())
             {
-                HttpResponseMessage response = await httpClient.GetAsync(_RequesURL);
+                HttpResponseMessage response = await httpClient.GetAsync(_requesURL);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -51,7 +58,7 @@ namespace TestTaskWishListAPP.Services.Repository
             WishItem currentItem = null;
             using (HttpClient httpClient = new HttpClient())
             {
-                HttpResponseMessage response = await httpClient.GetAsync($"{_RequesURL}/{item.Id}");
+                HttpResponseMessage response = await httpClient.GetAsync($"{_requesURL}/{item.Id}");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -75,7 +82,7 @@ namespace TestTaskWishListAPP.Services.Repository
             {
                 var json = JsonSerializer.Serialize(currentItem);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await httpClient.PutAsync($"{_RequesURL}/{currentItem.Id}", content);
+                var response = await httpClient.PutAsync($"{_requesURL}/{currentItem.Id}", content);
             }
         }
     }

@@ -1,5 +1,6 @@
+using TestTaskWishListAPP.Helper;
+using TestTaskWishListAPP.Services;
 using TestTaskWishListAPP.Services.Interfaces;
-using TestTaskWishListAPP.Services.Repository;
 
 namespace TestTaskWishListAPP
 {
@@ -11,8 +12,10 @@ namespace TestTaskWishListAPP
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddScoped<WishItemsRepository>();
-            builder.Services.AddScoped<IWishItemsRepository, WishItemsRepository>();
+            builder.Services.Configure<ApiSetting>(builder.Configuration.GetSection("ApiSetting"));
+            builder.Services.AddScoped<WishItemsService>();
+            builder.Services.AddScoped<IWishItemsRepository, WishItemsService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
