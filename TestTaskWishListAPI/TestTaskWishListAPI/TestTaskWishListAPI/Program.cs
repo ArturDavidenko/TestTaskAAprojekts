@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using TestTaskWishListAPI.Data;
 using TestTaskWishListAPI.Repository.Interfaces;
 using TestTaskWishListAPI.Repository;
+using Microsoft.OpenApi.Models;
 
 namespace TestTaskWishListAPI
 {
@@ -21,8 +22,15 @@ namespace TestTaskWishListAPI
             builder.Services.AddDbContext<DBContext>(options => {
                 options.UseNpgsql(builder.Configuration.GetConnectionString("WishListDataBase"));
             });
-            builder.Services.AddScoped<IWishListRepository, WishListRepository>();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IWishListRepository, WishListRepository>();   
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API for Wish List App", Version = "v1" });
+
+                var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
 
             var app = builder.Build();
 
@@ -30,7 +38,7 @@ namespace TestTaskWishListAPI
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API v1"));
             }
 
             app.UseHttpsRedirection();
