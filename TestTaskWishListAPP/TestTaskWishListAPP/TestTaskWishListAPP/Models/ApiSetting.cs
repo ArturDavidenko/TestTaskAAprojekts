@@ -1,4 +1,4 @@
-﻿namespace TestTaskWishListAPP.Helper
+﻿namespace TestTaskWishListAPP.Models
 {
     public class ApiSetting
     {

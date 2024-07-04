@@ -1,17 +1,16 @@
 ﻿using Microsoft.Extensions.Options;
 using System.Text;
 using System.Text.Json;
-using TestTaskWishListAPP.Helper;
 using TestTaskWishListAPP.Models;
 using TestTaskWishListAPP.Services.Interfaces;
 
 namespace TestTaskWishListAPP.Services
 {
-    public class WishItemsService : IWishItemsRepository
+    public class WishItemsRepository : IWishItemsRepository
     {
         private readonly string _requesURL;
 
-        public WishItemsService(IOptions<ApiSetting> apiSetting)
+        public WishItemsRepository(IOptions<ApiSetting> apiSetting)
         {
             _requesURL = apiSetting.Value.RequesURL;
         }
@@ -50,7 +49,7 @@ namespace TestTaskWishListAPP.Services
 
                 }
             }
-            return wishItems;
+            return wishItems.ToList();
         }
 
         public async Task UpdateWishItem(WishItem item)

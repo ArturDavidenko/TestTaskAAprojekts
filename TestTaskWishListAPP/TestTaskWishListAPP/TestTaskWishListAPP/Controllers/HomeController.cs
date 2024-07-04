@@ -8,11 +8,11 @@ namespace TestTaskWishListAPP.Controllers
     public class HomeController : Controller
     {
 
-        private readonly WishItemsService _service;
+        private readonly WishItemsRepository _repository;
 
-        public HomeController(WishItemsService repository)
+        public HomeController(WishItemsRepository repository)
         {
-            _service = repository;
+            _repository = repository;
         }
 
         public IActionResult Index()
@@ -22,26 +22,26 @@ namespace TestTaskWishListAPP.Controllers
 
         public async Task<IActionResult> HomePage() 
         {
-            var wishItems = await _service.GetWishItems();
+            var wishItems = await _repository.GetWishItems();
             return View(wishItems);
         }
 
         public async Task<IActionResult> DeleteWishItem(int id)
         {
-            await _service.DeleteWishItem(id);
+            await _repository.DeleteWishItem(id);
             return RedirectToAction("HomePage");
         }
 
         public async Task<IActionResult> CreateWishItem(string title, string description)
         {
-            await _service.CreateWishItem(title, description);
+            await _repository.CreateWishItem(title, description);
             return RedirectToAction("HomePage");
         }
 
         [HttpPost]
         public async Task<IActionResult> EditWishItem([FromBody] WishItem item)
         {
-            await _service.UpdateWishItem(item);
+            await _repository.UpdateWishItem(item);
             return RedirectToAction("HomePage");
         }
 

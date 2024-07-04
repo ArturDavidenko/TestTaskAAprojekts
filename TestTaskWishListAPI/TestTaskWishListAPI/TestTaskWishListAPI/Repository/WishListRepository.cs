@@ -56,7 +56,7 @@ namespace TestTaskWishListAPI.Repository
 
         public ICollection<WishItem> GetWishItems()
         {
-            return _context.wishItems.OrderBy(x => x.Id).ToList();
+            return _context.wishItems.OrderBy(x => x.Id).ToList(); //AsQueryable();
         }
 
         public async Task<bool> SaveAsync()
