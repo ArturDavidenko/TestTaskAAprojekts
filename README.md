@@ -26,22 +26,22 @@ I didn't write the logic of data retrieval in controllers, I brought this logic 
   Logic of layers separation(numbers is level of layer):
 
 0 - Controllers
-1 - Controller.cs
-1 - Controller.cs
+1 Controller.cs
+1 Controller.cs
 
 0 - Services
-1 - Interfaces
-2 - I*Service.cs
-2 - I*Service.cs
-1 - *Service.cs
-1 - *Service.cs
+1 Interfaces
+2 I*Service.cs
+2 I*Service.cs
+1 *Service.cs
+1 *Service.cs
 
 0 - Repositories
-1 - Interfaces
-2 - I*Repository.cs
-2 - I*Repository.cs
-1 - *Repository.cs
-1 - *Repository.cs
+1 Interfaces
+2 I*Repository.cs
+2 I*Repository.cs
+1 *Repository.cs
+1 *Repository.cs
 
       Notes 
 
