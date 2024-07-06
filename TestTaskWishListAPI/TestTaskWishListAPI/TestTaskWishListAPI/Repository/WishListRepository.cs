@@ -46,12 +46,12 @@ namespace TestTaskWishListAPI.Repository
             if (!WishItemExists(id))
                 return null;
 
-            return _context.wishItems.Where(x => x.Id == id).FirstOrDefault(); //SingleOrDefault();
+            return _context.wishItems.Where(x => x.Id == id).SingleOrDefault(); 
         }
 
         public WishItem GetWishItem(string title)
         {
-            return _context.wishItems.Where(x => x.Title == title).FirstOrDefault();
+            return _context.wishItems.Where(x => x.Title == title).SingleOrDefault();
         }
 
         public ICollection<WishItem> GetWishItems()
