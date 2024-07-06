@@ -53,5 +53,8 @@ not have to set autogeneration themselves. If this approach is wrong, please let
 
 In the API, made the output of errors in Swagger, description of endpoints. 
 I used the created class "Result" and Swashbuckle.AspNetCore.Swagger.
+But it is good practice to write Try catch constructs rather than if else, 
+but I did this so that at the Swagger level you can visually see the errors. 
+Again if this is not the way to do it, please let me know !
 
   
