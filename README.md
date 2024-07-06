@@ -44,7 +44,6 @@ I didn't write the logic of data retrieval in controllers, I brought this logic 
 1 - *Repository.cs
 1 - *Repository.cs
 
-
       Notes 
 
 In DBcontext I configured to save DateTime automatically without having to write date and time, 
