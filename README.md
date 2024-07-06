@@ -25,18 +25,18 @@ For example in controllers i can use only controller logic.
 I didn't write the logic of data retrieval in controllers, I brought this logic to the repository or service level.
   Logic of layers separation(numbers is level of layer):
 
-0 - Controllers
+0 Controllers
 1 Controller.cs
 1 Controller.cs
 
-0 - Services
+0 Services
 1 Interfaces
 2 I*Service.cs
 2 I*Service.cs
 1 *Service.cs
 1 *Service.cs
 
-0 - Repositories
+0 Repositories
 1 Interfaces
 2 I*Repository.cs
 2 I*Repository.cs
