@@ -62,16 +62,16 @@ namespace TestTaskWishListAPI.Controllers
 
 
         ///<summary>
-        ///Updates wish item by putting id as parametr and one more id as in json file (all id must be the same) 
+        ///Updates wish item by creating json file
         ///</summary>
-        [HttpPut("{wishItemId}")]
+        [HttpPut]
         [ProducesResponseType(400)]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> UpdateWishItem(int wishItemId, [FromBody] WishItem updateWishItem)
+        public async Task<IActionResult> UpdateWishItem([FromBody] WishItem updateWishItem)
         {
             var wishItemMap = _mapper.Map<WishItem>(updateWishItem);
-            var result = await _wishListRepository.UpdateWishItemAsync(wishItemMap, wishItemId);
+            var result = await _wishListRepository.UpdateWishItemAsync(wishItemMap);
             if (result.Success)
                 return Ok();
             else

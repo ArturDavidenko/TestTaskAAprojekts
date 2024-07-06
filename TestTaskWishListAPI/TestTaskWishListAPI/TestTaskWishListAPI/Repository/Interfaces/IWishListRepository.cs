@@ -16,7 +16,7 @@ namespace TestTaskWishListAPI.Repository.Interfaces
 
         Task<bool> SaveAsync();
 
-        Task<Result> UpdateWishItemAsync(WishItem updateWishItem, int wishItemId);
+        Task<Result> UpdateWishItemAsync(WishItem updateWishItem);
 
         Task<Result> DeleteWishItemAsync(WishItem wishItem);
     }

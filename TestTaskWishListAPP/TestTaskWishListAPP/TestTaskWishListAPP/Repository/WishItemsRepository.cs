@@ -81,7 +81,7 @@ namespace TestTaskWishListAPP.Services
             {
                 var json = JsonSerializer.Serialize(currentItem);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await httpClient.PutAsync($"{_requesURL}/{currentItem.Id}", content);
+                var response = await httpClient.PutAsync($"{_requesURL}", content);
             }
         }
     }

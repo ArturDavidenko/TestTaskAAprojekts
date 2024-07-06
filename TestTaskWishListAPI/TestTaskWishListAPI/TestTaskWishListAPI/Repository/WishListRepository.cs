@@ -65,15 +65,9 @@ namespace TestTaskWishListAPI.Repository
             return saved > 0;
         }
 
-        public async Task<Result> UpdateWishItemAsync(WishItem updateWishItem, int wishItemId)
+        public async Task<Result> UpdateWishItemAsync(WishItem updateWishItem)
         {
-            if (wishItemId != updateWishItem.Id)
-                return Result.Fail("Edit id and choosen id not equals!");
-
-            if (updateWishItem == null)
-                return Result.Fail("Wish item not exist!");
-
-            if (!WishItemExists(wishItemId))
+            if (!WishItemExists(updateWishItem.Id))
                 return Result.Fail("Choosen wish item to edit not exist!");
 
             _context.Update(updateWishItem);
