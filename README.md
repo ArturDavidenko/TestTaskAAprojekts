@@ -12,10 +12,10 @@ I will break this description into several parts:
 
 In this case i use: 
   For BackEnd: 
-Entity Framework, Swagger, AutoMapper, LINQ, PostgreSQL, DI(Dependency injection)
+Entity Framework, Swagger, AutoMapper, LINQ, PostgreSQL, 
 
   For FrontEnd: 
-ASP.NET MVC, DI(Dependency injection), JavaScript, Razor, Bootstrap, JSON
+ASP.NET MVC, JavaScript, Razor, Bootstrap, JSON
 
   
       Structure description
